@@ -1,0 +1,161 @@
+// @import '~iview/src/styles/index.less';
+
+html,
+body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.img-upload {
+  width: 80px;
+  // height: 127px;
+  line-height: 1;
+  overflow: hidden;
+
+  .img-icon {
+    font-size: 40px;
+    color: rgb(221, 221, 221);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    margin-left: -20px;
+
+  }
+
+  .ivu-upload {
+    height: 80px;
+  }
+}
+
+.upload-file {
+  line-height: 1;
+
+  .ivu-upload-drag {
+    border: none;
+    text-align: left;
+  }
+
+  .ivu-upload {
+    height: auto;
+    // min-height: 143px;
+  }
+}
+
+.ivu-menu-vertical {
+  .ivu-menu-submenu-title-icon {
+    position: absolute;
+    top: 50%;
+  }
+}
+
+.ivu-select-arrow {
+  margin-top: 0;
+}
+
+.ivu-message {
+  z-index: 9999 !important;
+}
+
+.layout-sider-tree {
+  max-height: 1295px;
+}
+
+.admin-page {
+  .table-box {
+    margin: 10px 0;
+  }
+
+  .other-button-box {
+    text-align: right;
+    margin: 10px 0;
+    min-height: 1px;
+
+    .userSel {
+      text-align: left;
+      width: 100%;
+      overflow: auto;
+      min-height: 10px;
+    }
+  }
+
+  .search_where {
+    // margin: 10px;
+    // padding: 10px;
+    background-color: #fff;
+
+    .ivu-form-item {
+      margin: 0;
+    }
+
+    .ivu-card-body {
+      padding: 16px;
+    }
+
+    .ivu-row {
+      &:not(:first-child) {
+        margin-top: 6px
+      }
+    }
+  }
+
+  .rigth-button {
+    text-align: right;
+  }
+
+  .page-box {
+    margin: 20px 0;
+
+    .ivu-page {
+      text-align: center;
+    }
+  }
+}
+
+.form {
+  textarea {
+    resize: none;
+  }
+}
+
+.tree-select-box {
+  .ivu-tree-title-selected {
+    background-color: #348eed;
+    color: #fff;
+
+    &:hover {
+      background-color: #348eed;
+      color: #fff;
+    }
+  }
+}
+
+.nowrap {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ivu-input[disabled]{
+    color:#515a6e !important; 
+}
+.ivu-select-disabled .ivu-select-selection{
+    color:#515a6e !important; 
+}
+
+
