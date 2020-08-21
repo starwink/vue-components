@@ -149,6 +149,15 @@ export default [
                 component: () =>
                     import('@/view/upload/show.vue')
             },
+            {
+                path: 'map',
+                name: 'components/map',
+                meta: {
+                    title: '自定义地图',
+                },
+                component: () =>
+                    import('@/view/map/index.vue')
+            },
         ]
             
             
