@@ -19,208 +19,220 @@ import parentView from '@/components/parent-view'
  */
 
 export default [
-    {
-        path: '/login',
-        name: 'login',
-        meta: {
-            title: '登录',
-            hideInMenu: true
-        },
-        component: () =>
+  {
+    path: '/login',
+    name: 'login',
+    meta: {
+      title: '登录',
+      hideInMenu: true
+    },
+    component: () =>
             import('@/view/login/login.vue')
+  },
+  {
+    path: '/admin',
+    name: 'adminlogin',
+    meta: {
+      title: 'ADMIN登录',
+      hideInMenu: true
     },
-    {
-        path: '/admin',
-        name: 'adminlogin',
-        meta: {
-            title: 'ADMIN登录',
-            hideInMenu: true
-        },
-        component: () =>
+    component: () =>
             import('@/view/admin-login/login.vue')
+  },
+  {
+    path: '/admin/projectlist',
+    name: 'admin/projectlist',
+    meta: {
+      title: '项目展示',
+      hideInMenu: true
     },
-    {
-        path: '/admin/projectlist',
-        name: 'admin/projectlist',
-        meta: {
-            title: '项目展示',
-            hideInMenu: true
-        },
-        component: () =>
+    component: () =>
             import('@/view/project/index.vue')
+  },
+
+  {
+    path: '/demo',
+    name: 'h5/demo',
+    meta: {
+      title: '项目展示',
+      hideInMenu: true
     },
-    {
-        path: '/demo',
-        name: 'h5/demo',
-        meta: {
-            title: '项目展示',
-            hideInMenu: true
-        },
-        component: () =>
+    component: () =>
             import('@/view/demo/index.vue')
+  },
+
+  {
+    path: '/',
+    name: '_home',
+    redirect: '/home',
+    component: Main,
+    meta: {
+      hideInMenu: true,
+      notCache: true
     },
-    
-    {
-        path: '/',
-        name: '_home',
-        redirect: '/home',
-        component: Main,
-        meta: {
-            hideInMenu: true,
-            notCache: true
-        },
-        children: [{
-            path: '/home',
-            name: 'home',
-            meta: {
-                hideInMenu: true,
-                title: '首页',
-                notCache: true,
-                icon: 'md-home'
-            },
-            component: () =>
+    children: [{
+      path: '/home',
+      name: 'home',
+      meta: {
+        hideInMenu: true,
+        title: '首页',
+        notCache: true,
+        icon: 'md-home'
+      },
+      component: () =>
                 import('@/view/single-page/home')
-        }]
+    }]
+  },
+  {
+    path: '/message',
+    name: 'message',
+    component: Main,
+    meta: {
+      hideInBread: true,
+      hideInMenu: true
     },
-    {
-        path: '/message',
-        name: 'message',
-        component: Main,
-        meta: {
-            hideInBread: true,
-            hideInMenu: true
-        },
-        children: [{
-            path: 'message_page',
-            name: 'message_page',
-            meta: {
-                icon: 'md-notifications',
-                title: '消息中心'
-            },
-            component: () =>
+    children: [{
+      path: 'message_page',
+      name: 'message_page',
+      meta: {
+        icon: 'md-notifications',
+        title: '消息中心'
+      },
+      component: () =>
                 import('@/view/single-page/message/index.vue')
-        }]
-    },
-    
+    }]
+  },
 
-    // PC
-    {
-        path: '/components',
-        name: 'components',
+  // PC
+  {
+    path: '/components',
+    name: 'components',
+    meta: {
+      icon: 'logo-buffer',
+      title: '组件管理'
+    },
+    component: Main,
+    children: [
+      {
+        path: 'tree',
+        name: 'components/tree',
         meta: {
-            icon: 'logo-buffer',
-            title: '组件管理',
+          title: 'Tree控件'
         },
-        component: Main,
-        children: [
-            {
-                path: 'tree',
-                name: 'components/tree',
-                meta: {
-                    title: 'Tree控件',
-                },
-                component: () =>
+        component: () =>
                     import('@/view/tree/index.vue')
-            },
-            {
-                path: 'imgupload',
-                name: 'components/imgupload',
-                meta: {
-                    title: '图片上传',
-                },
-                component: () =>
+      },
+      {
+        path: 'imgupload',
+        name: 'components/imgupload',
+        meta: {
+          title: '图片上传'
+        },
+        component: () =>
                     import('@/view/upload/index.vue')
-            },
-            {
-                path: 'imglist',
-                name: 'components/imglist',
-                meta: {
-                    title: '图片列表控件',
-                },
-                component: () =>
+      },
+      {
+        path: 'imglist',
+        name: 'components/imglist',
+        meta: {
+          title: '图片列表控件'
+        },
+        component: () =>
                     import('@/view/img-list/index.vue')
-            },
-            {
-                path: 'show',
-                name: 'components/show',
-                meta: {
-                    title: '图片上传&列表',
-                },
-                component: () =>
+      },
+      {
+        path: 'show',
+        name: 'components/show',
+        meta: {
+          title: '图片上传&列表'
+        },
+        component: () =>
                     import('@/view/upload/show.vue')
-            },
-            {
-                path: 'map',
-                name: 'components/map',
-                meta: {
-                    title: '自定义地图',
-                },
-                component: () =>
+      },
+      {
+        path: 'map',
+        name: 'components/map',
+        meta: {
+          title: '自定义地图'
+        },
+        component: () =>
                     import('@/view/map/index.vue')
-            },
-        ]
-            
-            
-    },
-   
-    {
-        path: '/setup',
-        name: 'setup',
+      },
+      {
+        path: '/sqleditir',
+        name: 'components/sql-editir',
         meta: {
-            icon: 'md-settings',
-            title: '设置中心',
-            showAlways: true,
-            access: ['setFocus']
+          title: 'SQL编辑器'
         },
-        component: Main,
-        children: [
+        component: () =>
+                    import('@/view/code-editir/index.vue')
+      },
+      {
+        path: '/js',
+        name: 'components/js-editir',
+        meta: {
+          title: 'JavaScript编辑器'
+        },
+        component: () =>
+                    import('@/view/code-editir/js.vue')
+      }
 
-            {
-                path: 'dict',
-                name: 'dict',
-                meta: {
-                    icon: 'md-pricetags',
-                    title: '字典项管理',
-                    access: ['setFocus/dictManage']
-                },
-                component: () =>
+    ]
+
+  },
+
+  {
+    path: '/setup',
+    name: 'setup',
+    meta: {
+      icon: 'md-settings',
+      title: '设置中心',
+      showAlways: true,
+      access: ['setFocus']
+    },
+    component: Main,
+    children: [
+
+      {
+        path: 'dict',
+        name: 'dict',
+        meta: {
+          icon: 'md-pricetags',
+          title: '字典项管理',
+          access: ['setFocus/dictManage']
+        },
+        component: () =>
                     import('@/view/setup/dict/list.vue')
-            },
-         
+      }
 
-        ]
+    ]
+  },
+
+  {
+    path: '/401',
+    name: 'error_401',
+    meta: {
+      hideInMenu: true
     },
-   
-   
-    
-    
-  
-    
-    {
-        path: '/401',
-        name: 'error_401',
-        meta: {
-            hideInMenu: true
-        },
-        component: () =>
+    component: () =>
             import('@/view/error-page/401.vue')
+  },
+  {
+    path: '/500',
+    name: 'error_500',
+    meta: {
+      hideInMenu: true
     },
-    {
-        path: '/500',
-        name: 'error_500',
-        meta: {
-            hideInMenu: true
-        },
-        component: () =>
+    component: () =>
             import('@/view/error-page/500.vue')
+  },
+  {
+    path: '*',
+    name: 'error_404',
+    meta: {
+      hideInMenu: true
     },
-    {
-        path: '*',
-        name: 'error_404',
-        meta: {
-            hideInMenu: true
-        },
-        component: () =>
+    component: () =>
             import('@/view/error-page/404.vue')
-    }
+  }
 ]
