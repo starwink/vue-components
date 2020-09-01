@@ -5,6 +5,7 @@
   "private": false,
   "scripts": {
     "dev": "vue-cli-service serve --open --port 18080",
+    "serve": "vue-cli-service serve --open --port 18080",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",

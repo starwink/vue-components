@@ -1,6 +1,6 @@
 import Mock from 'mockjs'
 import { login, logout, getUserInfo } from './login'
-import { getTableData, getDragList, uploadImage, getOrgData, getTreeSelectData,getTreeNodeData,getDictsList } from './data'
+import { getTableData, getDragList, uploadImage, getOrgData, getTreeSelectData,getTreeNodeData,getDictsList,getUserLogin,getDictsAll,getReskey,getLoginLogout } from './data'
 
 // 配置Ajax请求延时，可用来测试网络延迟大时项目中一些效果
 Mock.setup({
@@ -8,6 +8,10 @@ Mock.setup({
 })
 Mock.mock(/\/tagOrg\/getOrgTagGroupList/, getTreeNodeData)
 Mock.mock(/\/dicts\/list/, getDictsList)
+Mock.mock(/\/login\/login/, getUserLogin)
+Mock.mock(/\/res\/resKeys/, getReskey)
+Mock.mock(/\/dicts\/all/, getDictsAll)
+Mock.mock(/\/login\/logout/, getLoginLogout)
 
 // Mock.mock(/\/res\/auserRes/, resData)
 // Mock.mock(/\/taskIssue\/finishDetails/, finishDetails)

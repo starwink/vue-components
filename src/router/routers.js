@@ -159,22 +159,41 @@ export default [
                     import('@/view/map/index.vue')
       },
       {
-        path: '/sqleditir',
-        name: 'components/sql-editir',
+        path: '/editir',
+        name: 'components/editir',
         meta: {
-          title: 'SQL编辑器'
+          title: '代码编辑器'
         },
-        component: () =>
-                    import('@/view/code-editir/index.vue')
+        component: parentView,
+        children: [
+            {
+                path: 'sqleditir',
+                name: 'components/sql-editir',
+                meta: {
+                  title: 'SQL编辑器'
+                },
+                component: () =>
+                            import('@/view/code-editir/index.vue')
+              },
+              {
+                path: 'js',
+                name: 'components/js-editir',
+                meta: {
+                  title: 'JavaScript编辑器'
+                },
+                component: () =>
+                            import('@/view/code-editir/js.vue')
+              },
+        ]
       },
+      
       {
-        path: '/js',
-        name: 'components/js-editir',
-        meta: {
-          title: 'JavaScript编辑器'
-        },
-        component: () =>
-                    import('@/view/code-editir/js.vue')
+          path:'/fun',
+          name:'components/fun',
+          meta:{
+              title:'js 函数'
+          },
+          component:()=>import('@/view/fun/index.vue')
       }
 
     ]

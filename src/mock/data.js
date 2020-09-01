@@ -4,6 +4,9 @@ import orgData from './data/org-data'
 import { treeData } from './data/tree-select'
 import treeNodeData from './data/tree-node-data'
 import dictsList from './data/dicts-list'
+import userLogin from './data/user'
+import dictsAll from './data/dicts-all'
+import reskey from './data/reskey'
 import { getOrgTagGroupList } from './data/getOrgTagGroupList'
 const Random = Mock.Random
 
@@ -48,6 +51,19 @@ export const getTreeNodeData= req=>{
 export const getDictsList= req=>{
     return dictsList
 }
+export const getUserLogin =req=>{
+    return userLogin;
+}
+export const getDictsAll=req=>{
+    return dictsAll
+}
+export const getReskey=req=>{
+    return reskey;
+}
+export const getLoginLogout=req=>{
+    return reskey;
+}
+
 
 
 
