@@ -166,34 +166,50 @@ export default [
         },
         component: parentView,
         children: [
-            {
-                path: 'sqleditir',
-                name: 'components/sql-editir',
-                meta: {
-                  title: 'SQL编辑器'
-                },
-                component: () =>
+          {
+            path: 'sqleditir',
+            name: 'components/sql-editir',
+            meta: {
+              title: 'SQL编辑器'
+            },
+            component: () =>
                             import('@/view/code-editir/index.vue')
-              },
-              {
-                path: 'js',
-                name: 'components/js-editir',
-                meta: {
-                  title: 'JavaScript编辑器'
-                },
-                component: () =>
+          },
+          {
+            path: 'js',
+            name: 'components/js-editir',
+            meta: {
+              title: 'JavaScript编辑器'
+            },
+            component: () =>
                             import('@/view/code-editir/js.vue')
-              },
+          }
         ]
       },
-      
       {
-          path:'/fun',
-          name:'components/fun',
-          meta:{
-              title:'js 函数'
-          },
-          component:()=>import('@/view/fun/index.vue')
+        path: '/seadragon',
+        name: 'components/seadragon',
+        meta: {
+          title: '大图查看'
+        },
+        component: () => import('@/view/seadragon/index.vue')
+      },
+      {
+        path: '/seadragon/mark',
+        name: 'components/seadragon-mark',
+        meta: {
+          title: '大图查看demo'
+        },
+        component: () => import('@/components/openseadragon/mark.vue')
+      },
+
+      {
+        path: '/fun',
+        name: 'components/fun',
+        meta: {
+          title: 'js 函数'
+        },
+        component: () => import('@/view/fun/index.vue')
       }
 
     ]
