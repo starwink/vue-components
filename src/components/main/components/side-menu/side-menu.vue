@@ -72,7 +72,9 @@ export default {
   },
   data () {
     return {
-      openedNames: []
+      openedNames: [
+        //   'setup',
+      ]
     }
   },
   methods: {
@@ -110,7 +112,6 @@ export default {
     this.openedNames = getUnion(this.openedNames, this.getOpenedNamesByActiveName(name))
   },
   created(){
-      console.log('menuList',this.menuList)
   }
 }
 </script>

@@ -15,6 +15,7 @@ import parentView from '@/components/parent-view'
  *  access: (null) 可访问该页面的权限数组，当前路由设置的权限会影响子路由
  *  icon: (-) 该页面在左侧菜单、面包屑和标签导航处显示的图标，如果是自定义图标，需要在图标名称前加下划线'_'
  *  beforeCloseName: (-) 设置该字段，则在关闭当前tab页时会去'@/router/before-close.js'里寻找该字段名对应的方法，作为关闭前的钩子函数
+ * showAlways(false): children 只有一条时不显示折叠
  * }
  */
 
@@ -64,7 +65,7 @@ export default [
   {
     path: '/',
     name: '_home',
-    redirect: '/home',
+    redirect: '/login',
     component: Main,
     meta: {
       hideInMenu: true,
@@ -109,8 +110,10 @@ export default [
     name: 'components',
     meta: {
       icon: 'logo-buffer',
-      title: '组件管理'
+      title: '组件管理',
+      showAlways:true,
     },
+    
     component: Main,
     children: [
       {
