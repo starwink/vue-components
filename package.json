@@ -31,6 +31,7 @@
     "simplemde": "^1.11.2",
     "sortablejs": "^1.7.0",
     "tree-table-vue": "^1.1.0",
+    "uuid": "^8.3.0",
     "v-org-tree": "^1.0.6",
     "v-viewer": "^1.5.1",
     "view-design": "^4.0.0",

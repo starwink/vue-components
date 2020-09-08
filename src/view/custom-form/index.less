@@ -1,0 +1,99 @@
+.tools-page{
+    width:100%;
+    height: 100%;
+    overflow: hidden scroll;
+    
+    .tool-list{
+        width:200px;
+        height: ~"calc(100% - 6px)";
+        overflow: hidden scroll;
+        display: inline-block;
+        margin:0 10px;
+        background-color: #fff;
+        .ivu-card-body{
+            padding:0;
+        }
+        ul{
+            list-style-type:none;
+            li{
+                padding: 8px 16px;
+                width:100%;
+                cursor: pointer;
+                &:hover{
+                    background-color: #348eed;
+                    color:#fff;
+                    cursor:pointer
+                }
+            }
+        }
+        
+
+    }
+    .preview-form{
+        width:~"calc(100% - 220px)";
+        display: inline-block;
+        height: ~"calc(100% - 6px)";
+        overflow: hidden scroll;
+        background-color: #fff;
+        .ivu-date-picker{
+            width:100%;
+        }
+        ul{
+            list-style-type:none;
+            li{
+                
+                cursor: pointer;
+                &:not(:first-child){
+                    padding-top: 24px;
+                    border-top:dashed 1px #999;
+                }
+                .ivu-form-item{
+                    width: ~ "calc(100% - 120px)";
+                    display: inline-block;
+                }
+                .item-options{
+                    display: inline-block;
+                    width:120px;
+                    float: right;
+
+                    i{
+                        cursor: pointer;
+                        font-size: 24px;
+                        padding:4px 12px;
+                        &:nth-child(2){
+                            color:red;
+                        }
+                    }
+                }
+            }
+            .user-mark{
+                border:dashed 1px #aaa;
+                padding:4px 12px;
+                text-align: center;
+            }
+        }
+        .label-active{
+            border:solid 1px #348eed;
+        }
+        .ivu-card{
+            height: 100%;;
+        }
+    }
+    
+}
+.footer-button{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    width:100%;
+    padding: 8px 16px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.12);
+    text-align: right;
+    button{
+        margin-right: 12px;
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+}

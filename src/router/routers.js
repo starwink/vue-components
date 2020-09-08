@@ -213,6 +213,14 @@ export default [
           title: 'js 函数'
         },
         component: () => import('@/view/fun/index.vue')
+      },
+      {
+        path: '/custom',
+        name: 'components/custom',
+        meta: {
+          title: '自定义表单'
+        },
+        component: () => import('@/view/custom-form/createPage.vue')
       }
 
     ]
