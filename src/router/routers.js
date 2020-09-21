@@ -221,6 +221,14 @@ export default [
           title: '自定义表单'
         },
         component: () => import('@/view/custom-form/createPage.vue')
+      },
+      {
+        path: '/ruler',
+        name: 'components/ruler',
+        meta: {
+          title: '刻度尺'
+        },
+        component: () => import('@/view/ruler/index.vue')
       }
 
     ]
