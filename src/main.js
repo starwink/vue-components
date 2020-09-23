@@ -20,29 +20,26 @@ import 'v-org-tree/dist/v-org-tree.css'
 import 'view-design/dist/styles/iview.css'
 import VueClipboard from 'vue-clipboard2' // 剪贴板
 
-import Viewer from "v-viewer"
+import Viewer from 'v-viewer'
 import 'viewerjs/dist/viewer.css'
-Vue.use(Viewer);
 
 import preview from 'vue-photo-preview'
 import 'vue-photo-preview/dist/skin.css'
-Vue.use(preview)
 
 import './index.scss'
 import './iconfont.css'
 
-import tool from "@/utils/tool.js";
+import tool from '@/utils/tool.js'
+Vue.use(Viewer)
+Vue.use(preview)
 
 Viewer.setDefaults({
-    Options: { "inline": true, "button": true, "navbar": true, "title": true, "toolbar": true, "tooltip": true, "movable": true, "zoomable": true, "rotatable": true, "scalable": true, "transition": true, "fullscreen": true, "keyboard": true, "url": "data-source" }
-});
+  Options: { 'inline': true, 'button': true, 'navbar': true, 'title': true, 'toolbar': true, 'tooltip': true, 'movable': true, 'zoomable': true, 'rotatable': true, 'scalable': true, 'transition': true, 'fullscreen': true, 'keyboard': true, 'url': 'data-source' }
+})
 
-
-
-Vue.prototype.$helper = tool;
+Vue.prototype.$helper = tool
 Vue.prototype.$config = config
 Vue.prototype.$comfun = comfun
-
 
 // 实际打包时应该不引入mock
 /* eslint-disable */
