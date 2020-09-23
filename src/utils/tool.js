@@ -1,5 +1,6 @@
 // 工具方法
-const moment = require('moment');
+const dayjs = require('dayjs');
+
 import { v4 as uuidv4 } from 'uuid';
 export default {
     //EXCEL导出
@@ -365,7 +366,7 @@ export default {
         if (!str || str == 'Invalid date') {
             str = ''
         } else {
-            str = moment(str).format(format)
+            str = dayjs(str).format(format)
         }
         return str;
     },

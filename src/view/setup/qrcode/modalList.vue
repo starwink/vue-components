@@ -143,8 +143,8 @@ export default {
             }
             this.spinShow = true;
             let params = { ...this.form, ...{ pageNum: this.page.current, pageSize: this.page.pageSize } };
-            params.createTimeStart = this.$comfun.getDateParams(params.createTimeStart,'YYYY-MM-DD HH:mm');
-            params.createTimeEnd = this.$comfun.getDateParams(params.createTimeEnd,'YYYY-MM-DD HH:mm');
+            params.createTimeStart = this.$helper.getDateParams(params.createTimeStart,'YYYY-MM-DD HH:mm');
+            params.createTimeEnd = this.$helper.getDateParams(params.createTimeEnd,'YYYY-MM-DD HH:mm');
 
             http.qrcodeList(params).then(res => {
                 this.spinShow = false;

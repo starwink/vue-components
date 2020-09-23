@@ -18,7 +18,6 @@ import TreeTable from 'tree-table-vue'
 import VOrgTree from 'v-org-tree'
 import 'v-org-tree/dist/v-org-tree.css'
 import 'view-design/dist/styles/iview.css'
-import Moment from 'vue-moment' // 日期格式
 import VueClipboard from 'vue-clipboard2' // 剪贴板
 
 import Viewer from "v-viewer"
@@ -41,6 +40,8 @@ Viewer.setDefaults({
 
 
 Vue.prototype.$helper = tool;
+Vue.prototype.$config = config
+Vue.prototype.$comfun = comfun
 
 
 // 实际打包时应该不引入mock
@@ -53,7 +54,6 @@ Vue.use(iView, {
 Vue.use(TreeTable)
 Vue.use(VOrgTree)
 
-Vue.use(Moment);
 Vue.use(VueClipboard)
 
 /**
@@ -67,8 +67,7 @@ Vue.config.productionTip = false
 /**
  * @description 全局注册应用配置
  */
-Vue.prototype.$config = config
-Vue.prototype.$comfun = comfun
+
 // Vue.prototype.$Message=iView.$Message;
 /**
  * 注册指令

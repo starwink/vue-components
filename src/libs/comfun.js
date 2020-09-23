@@ -1,7 +1,4 @@
 import config from '@/config'
-import { StringStream } from 'codemirror';
-// import oment from 'vue-moment'/
-const moment = require('moment')
 export default {
     getImgUrl:(str)=>{
         let src='';
@@ -21,14 +18,7 @@ export default {
         }
         return src;
     },
-    getDateParams:(str,format='YYYY-MM-DD')=>{
-        if (!str || str == 'Invalid date') {
-            str = ''
-        } else {
-            str = moment(str).format(format)
-        }
-        return str;
-    },
+   
     getProjectId:()=>{
         return config.projectId
     },
