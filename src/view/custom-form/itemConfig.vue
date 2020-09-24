@@ -62,10 +62,10 @@
                 
                 </Col>
             </Row>
-            <Row  v-if="other.options.length!=0" >
+            <Row  v-show="other.options.length!=0" >
                 <Col span="24">
                     <FormItem label="选择项管理：">
-                        <selTagList ref="selTagList" :tagArray="other.options"></selTagList>
+                        <selTagList ref="selTagList" ></selTagList>
                     </FormItem>
                 </Col>
             </Row>
@@ -165,11 +165,10 @@ export default {
         init(data,index) {
             Object.assign(this.$data, this.$options.data())
             this.show = true;
-            console.log('init',data)
             this.form=JSON.parse(JSON.stringify(data));
-            this.otherInitPlant(this.form);
-            // this.form=data; //使用数据绑定无法实现 重新渲染校验
+            
             this.index=index;
+            this.otherInitPlant(this.form);
         },
 
         resetForm() {
@@ -207,18 +206,20 @@ export default {
             }
 
             if(this.other.optionText!= '' && this.other.options.indexOf(this.other.optionText)==-1){
-                let options=JSON.parse(JSON.stringify(this.other.options))
-                
+                // let options=JSON.parse(JSON.stringify(this.other.options))
                 this.other.options.push(this.other.optionText);
                 this.other.optionText='';
+                // this.$refs.selTagList.init(this.other.options)
             }
+            console.log('additem',this.other.options)
         },
         delItem(index){
             if(!this.isHaveOption(this.form)){
                 return;
             }
             this.other.options.splice(index,1)
-
+            console.log('delItem',this.other.options)
+            this.$set(this.form.other,'options',this.other.options)
         },
         //autoComposet
         autoCompleOption(){
@@ -234,6 +235,7 @@ export default {
                 this.form.val=item.val
             }
             this.other.options=[];
+            this.$refs.selTagList.init(this.other.options)
 
         },
         watchRules(data){
@@ -260,7 +262,9 @@ export default {
                     options:[]
                 }
             }   
-            console.log('other',this.other)
+            this.$nextTick(()=>{
+                this.$refs.selTagList.init(this.other.options)
+            })
         },
         //保存时清空无关对象
         otherSavePlant(data){

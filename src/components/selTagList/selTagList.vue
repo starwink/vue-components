@@ -10,10 +10,6 @@
 export default {
     name: 'selTagList',
     props:{
-        tagArray:{
-            type:Array,
-            default:[],
-        },
         disabled: {
             type:Boolean,
             defalut:false
@@ -28,21 +24,22 @@ export default {
         }
     },
     methods: {
-        // init(data) {
-        //     this.data = data;
-        // },
+        init(data) {
+            this.data = data;
+        },
         handleClose(index) {
             this.data.splice(index, 1)
         },
+        getSelData(){
+            return this.data;
+        }
        
     },
     computed: {
     },
-    mounted(){
-        this.data=this.tagArray;
-    },
+   
     watch: {
-        tagArray:function(v){
+        data:function(v){
             console.log('v',v)
         }
     }
