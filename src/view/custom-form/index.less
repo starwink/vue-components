@@ -38,15 +38,21 @@
         .ivu-date-picker{
             width:100%;
         }
+        // .ivu-input-number{
+        //     width:100%;
+        // }
         ul{
             list-style-type:none;
-            li{
-                
-                cursor: pointer;
+            .item-li{
                 &:not(:first-child){
                     padding-top: 24px;
                     border-top:dashed 1px #999;
                 }
+            }
+            li{
+                
+                cursor: pointer;
+                
                 .ivu-form-item{
                     width: ~ "calc(100% - 120px)";
                     display: inline-block;
@@ -80,6 +86,9 @@
         }
     }
     
+}
+.page-drawer{
+    padding-bottom: 40px;
 }
 .footer-button{
     position: absolute;

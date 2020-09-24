@@ -8,7 +8,7 @@
                 </p>
                 <Form ref="createForm" :model="userData" :key="formNum" :label-width="formConfig.labelWidth" >
                     <ul>
-                        <li v-for="item,index in userData.configForm" :key="index" :class="[item.active?'label-active':'']" >
+                        <li v-for="item,index in userData.configForm" :key="index" :class="[item.active?'label-active':'']" class="item-li" >
 
                             <FormItem v-if="item.name=='input'" :prop="'configForm.'+index+'.val'" :label="item.title+'：'" :rules="item.rules">
                                 <Input v-model.trim="item.val" :placeholder="item.placeholder" ></Input>
@@ -16,11 +16,33 @@
                             <FormItem v-else-if="item.name=='textarea'" :prop="'configForm.'+index+'.val'" :label="item.title+'：'" :rules="item.rules">
                                 <Input v-model.trim="item.val" type="textarea" :placeholder="item.placeholder"></Input>
                             </FormItem>
+                            <FormItem v-else-if="item.name=='input-number'" :prop="'configForm.'+index+'.val'" :label="item.title+'：'" :rules="item.rules">
+                                <Input v-model.trim="item.val" type="number" number :placeholder="item.placeholder"></Input>
+                                <!-- <InputNumber  v-model.trim="item.val" :placeholder="item.placeholder" ></InputNumber> -->
+                            </FormItem>
                             <FormItem v-else-if="item.name=='date'" :prop="'configForm.'+index+'.val'" :label="item.title+'：'" :rules="item.rules">
                                 <DatePicker type="date" v-model.trim="item.val"  format="yyyy年MM月dd日"  :placeholder="item.placeholder"></DatePicker>
                             </FormItem>
                             <FormItem v-else-if="item.name=='daterange'" :prop="'configForm.'+index+'.val'" :label="item.title+'：'" :rules="item.rules">
                                 <DatePicker type="daterange" v-model.trim="item.val"    :placeholder="item.placeholder"></DatePicker>
+                            </FormItem>
+
+                            <FormItem v-else-if="item.name=='radio'" :prop="'configForm.'+index+'.val'" :label="item.title+'：'" :rules="item.rules">
+                                <RadioGroup v-model="item.val">
+                                    <Radio v-for="value of item.other.options" v-if="value" :label="value" :key="'radio_'+value" ></Radio>
+                                </RadioGroup>
+                            </FormItem>
+
+                            <FormItem v-else-if="item.name=='checkbox'" :prop="'configForm.'+index+'.val'" :label="item.title+'：'" :rules="item.rules">
+                                <CheckboxGroup v-model="item.val">
+                                    <Checkbox v-for="value of item.other.options" v-if="value" :label="value" :key="'checkbox_'+value" ></Checkbox>
+                                </CheckboxGroup>
+                            </FormItem>
+
+                            <FormItem v-else-if="item.name=='select'" :prop="'configForm.'+index+'.val'" :label="item.title+'：'" :rules="item.rules">
+                                <Select v-model="item.val" :multiple="item.other.multiple" :filterable="item.other.filterable" >
+                                    <Option v-for="value of item.other.options" v-if="value" :value="value" :key="'select_'+value">{{ value }}</Option>
+                                </Select>
                             </FormItem>
 
                             <FormItem v-else :label="item.title+'：'" >
@@ -66,7 +88,7 @@
                 <li v-for="item,index of tools" :key="index" @click.stop="add(item)">{{item.title}}</li>
             </ul>
         </Card>
-        <itemConfig ref="itemConfig" @del="del" @success="itemConfig" @closeActive="closeActive"></itemConfig>
+        <itemConfig ref="itemConfig" @del="del" @success="itemConfig" ></itemConfig>
     </div>
 </template>
 <script>
@@ -114,7 +136,7 @@ export default {
         }, 
         add(item) {
             let defaultParma = JSON.parse(JSON.stringify(this.defaultParams))
-            let params = { ...item, ...defaultParma,...{_fieldIndex:this.$helper.getNewUuid()}}
+            let params = {  ...defaultParma,...item,...{_fieldIndex:this.$helper.getNewUuid()}}
             this.userData.configForm.push(params);
         },
         addItem(){
@@ -129,16 +151,16 @@ export default {
             this.userData.configForm.splice(index,1);
         },
         openConfig(item,index) {
-            item.active = !item.active;
+            // item.active = !item.active;
             this.$refs.itemConfig.init(item,index);
         },
         getData() {
             let data = localStorage.getItem('custom-form');
             if (data) {
                 data = JSON.parse(data);
-                data.map(res => {
-                    res.active = false;
-                })
+                // data.map(res => {
+                //     res.active = false;
+                // })
             }
            this.userData = data;
         },

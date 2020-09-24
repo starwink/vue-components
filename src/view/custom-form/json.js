@@ -14,15 +14,28 @@ export default [
     {
         name:'radio',
         title:'单选框',
+        other:{
+            options:[]
+        }
     },
     {
         name:'checkbox',
         title:'多选框',
+        val:[],
+        other:{
+            options:[]
+        }
     },
 
     {
         name:'select',
         title:'下拉框',
+        // val:'',
+        other:{
+            options:[],
+            multiple:false,
+            filterable:false,
+        }
     },
     {
         name:'date',
