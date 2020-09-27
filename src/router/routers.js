@@ -249,15 +249,26 @@ export default [
 
       {
         path: 'dict',
-        name: 'dict',
+        name: 'setup/dict',
         meta: {
           icon: 'md-pricetags',
           title: '字典项管理',
           access: ['setFocus/dictManage']
         },
         component: () =>
-                    import('@/view/setup/dict/list.vue')
+            import('@/view/setup/dict/list.vue')
+      },
+      {
+        path: 'demo',
+        name: 'setup/demo',
+        meta: {
+        //   icon: 'md-pricetags',
+          title: 'DEMO',
+        },
+        component: () =>
+            import('@/view/setup/demo/list.vue')
       }
+
 
     ]
   },

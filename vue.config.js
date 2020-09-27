@@ -43,27 +43,9 @@ module.exports = {
   devServer: {
     // proxy: 'http://127.0.0.1:7005'
     proxy: {
-
-      '/shuxi-zxzd': {
-        target: 'http://admin-test.zhixiongzoudu.com/'
-        // changeOrigin:true,
-        // pathReWrite:{'^/hizhu-apph5':'/hizhu-apph5'}
-      },
-      '/shuxi-master-zxzd': {
-        target: 'http://admin-test.zhixiongzoudu.com/'
-        //target: 'http://192.168.7.104:20004/'
-      },
-
-      '/shuxi-master-zxzd-test': {
-        target: 'http://admin-test.zhixiongzoudu.com/'
-      },
-      '/shuxi-master': {
-        target: 'http://admin-test.zhixiongzoudu.com/'
-      },
-      
-      '/shuxi-dict': {
-        target: 'http://admin-test.zhixiongzoudu.com/'
-      }
+        '/json': {
+            target: 'http://127.0.0.1:7001'
+        }
     }
   }
 }

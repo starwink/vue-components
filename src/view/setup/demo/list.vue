@@ -46,8 +46,10 @@
 <script>
 import { mapState } from 'vuex'
 import http from '@/api/shuxi-dict.js'
+import axios from '@/api/demo-axios'
 import form from './components/form';
 import itemList from './components/itemList';
+// import axios from 'axios'
 
 
 export default {
@@ -59,7 +61,44 @@ export default {
 
     },
     methods: {
-        
+        init(){
+            console.log('init')
+        //    axios.get('/json/1',{baseURL:'http://127.0.0.1:7001'}).then(res=>{
+        //        console.log(res)
+        //    })
+            // var instance = axios.create({
+            //     baseURL: 'http://127.0.0.1:7001',
+            //     timeout: 1000,
+            //     // headers: {'X-Custom-Header': 'foobar'}
+            // });
+            // instance.get('/json/1').then(res=>{
+            //     console.log(res)
+            // })
+
+         
+            let data={name:'12321'}
+            // instance.post('/1',data, {
+            //     baseURL: '/json',
+            //     timeout: 5000,
+            //     params:{id:1},
+                
+            // });
+            console.log('list axios',axios)
+            // axios.list({id:1})
+            axios.pushData({id:1}).then(res=>{
+                console.log('true',res)
+            },err=>{
+                console.log('err',err)
+            })
+            // setTimeout(function(){
+            //     console.log(222);
+            //     instance.get('/1',{
+            //         baseURL: '/json',
+            //         params:{id:1},
+                    
+            //     })
+            // },5000)
+        },
         reset() {
             let redata = this.$options.data()
             Object.assign(this.$data.form, redata.form)
@@ -122,6 +161,7 @@ export default {
     },
     created() {
         this.search();
+        this.init();
     },
     data() {
         return {
