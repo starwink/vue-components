@@ -1,12 +1,12 @@
-import axiosClass from '@/axios/axios.v2'
+import axiosClass from '@/axios/axios.class'
 
-const axios=new axiosClass({
-    baseUrl:'/',
-    timeout:1000,
+const axios = new axiosClass({
+    baseUrl: '/',
+    timeout: 1000,
 })
 //重写方法demo ,去掉过渡器
 /* axios.post=function(url,data={},config={}){
-    console.log('neee',url,data,config)
+        console.log('neee',url,data,config)
         config.data=data;
         let option={headers:{
             'content-type': 'application/json;charset=UTF-8'
@@ -20,17 +20,17 @@ const projectName = ''
 
 const server = {
 
-  // 列表
+    // 列表
     list: (params) => {
         return axios.get(
-            `${projectName}/json/1`,params,{
+            `${projectName}/json/1`, params, {
             // responseType:'document',
             // headers:{demo:12321}
-            }
+        }
         )
     },
-    pushData:(params)=>{
-        return axios.post(`${projectName}/json/1`,params)
+    pushData: (params) => {
+        return axios.post(`${projectName}/json/1`, params)
     }
 
 
