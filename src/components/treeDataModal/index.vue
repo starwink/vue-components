@@ -104,6 +104,7 @@ export default {
         },
         save() {
             this.$emit('success',this.data);
+            this.close();
         },
         addItem(row, isBase = false){
             this.addObj={row:row,isBase:isBase};
@@ -173,6 +174,7 @@ export default {
                     }
                 }
             }
+            this.formatTreeData();
         },
         editTreeItem(otherData={}) {
             let {row,isBase}=this.addObj;
@@ -184,6 +186,7 @@ export default {
             if (currRow) {
                 currRow.other=otherData;
                 currRow.label=otherData.label;
+                
             } else {
                 for (let i = 0; i < this.data.length; i++) {
                     if (currRow == void 0 && this.data[i].children != void 0 && this.data[i].children.length > 0) {
@@ -192,6 +195,7 @@ export default {
                             if (currRow) {
                                 currRow.other=otherData;
                                 currRow.label=otherData.label;
+                                this.formatTreeData();
                             }
                             return;
                         }
@@ -253,6 +257,7 @@ export default {
                     res.children=this.formatTreeSubData(res.children);
                 }
                 if(res!=void 0 &&  res.delete!=true ){
+                    res['value']=res.id;
                     data.push(res);
                 }
             })
@@ -267,6 +272,7 @@ export default {
                     res.children=this.formatTreeSubData(res.children);
                 }
                 if(res!=void 0 &&  res.delete!=true ){
+                    res['value']=res.id;
                     data.push(res);
                 }
             })

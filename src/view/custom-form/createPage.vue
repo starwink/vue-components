@@ -45,6 +45,10 @@
                                 </Select>
                             </FormItem>
 
+                            <FormItem v-else-if="item.name=='cascader'" :prop="'configForm.'+index+'.val'" :label="item.title+'：'" :rules="item.rules">
+                                <Cascader :data="item.other.options" v-model="item.val"></Cascader>
+                            </FormItem>
+                            
                             <FormItem v-else :label="item.title+'：'" >
                                 <p>{{item.val}}</p>
                             </FormItem>

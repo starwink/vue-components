@@ -73,6 +73,8 @@ export default {
         del(row){
             console.log(row);
         },
+       
+        
     },
     mounted(){
         // this.data=this.treeData;

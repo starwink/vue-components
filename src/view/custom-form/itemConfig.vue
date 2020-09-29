@@ -1,6 +1,6 @@
 <template>
     <Drawer v-model="show" title="字段配置" class-name="page-drawer" :closable="false" width="60">
-        <Form :model="form" ref="form"   :label-width="156">
+        <Form :model="form" ref="form" :label-width="156">
             <Row :gutter="16">
                 <Col span="24">
                 <FormItem label="字段类型：" prop="name">
@@ -49,73 +49,87 @@
                 </Col>
             </Row>
 
-            
+             
+
             <Row :gutter="16" v-if="isHaveOption(form)">
-                <Col span="24" style="width:clac(100% - 100px)">
-                <FormItem label="选择项：" >
-                    <Input v-model.trim="other.optionText"  maxlength="50" @on-enter="addItem">
+                <Col span="24"  v-show="form.name!='cascader'">
+                <FormItem label="选择项：">
+                    <Input v-model.trim="other.optionText" maxlength="50" @on-enter="addItem">
                     <div slot="append">
-                        <Button icon="ios-add" @click="addItem" >新增选择项</Button>
+                        <Button icon="ios-add" @click="addItem">新增选择项</Button>
                     </div>
                     </Input>
                 </FormItem>
-                
+
                 </Col>
             </Row>
-            <Row  v-show="other.options.length!=0" >
-                <Col span="24">
+            <Row v-show="other.options.length!=0 && form.name!='cascader'">
+                <Col span="24" v-show="form.name!='cascader'">
+                <FormItem label="选择项管理：">
+                    <selTagList  ref="selTagList" ></selTagList>
+                </FormItem>
+                </Col>
+            </Row>
+
+            <Row  v-show="form.name=='cascader'">
+                <Col span="24" >
                     <FormItem label="选择项管理：">
-                        <selTagList ref="selTagList" ></selTagList>
+                        <Button type="info" icon="ios-add" @click="editCascaderOption">
+                            级联配置
+                        </Button>
+                        <treeDataModal title="级联配置" ref="treeDataModal" @success="saveCascader"></treeDataModal>
                     </FormItem>
                 </Col>
             </Row>
 
-            <Row :gutter="16"  v-if="form.name=='select'">
+            <Row :gutter="16" v-if="form.name=='select'">
                 <Col span="24">
                 <FormItem label="默认值：" prop="val">
                     <Select v-model="form.val" :multiple="other.multiple" :filterable="other.filterable">
-                        <Option v-for="item of other.options"  :value="item" :key="item" >{{ item }}</Option>
+                        <Option v-for="item of other.options" :value="item" :key="item">{{ item }}</Option>
                     </Select>
                 </FormItem>
                 </Col>
             </Row>
-            <Row :gutter="16"  v-if="form.name=='radio'">
+            <Row :gutter="16" v-if="form.name=='radio'">
                 <Col span="24">
                 <FormItem label="默认值：" prop="val">
-                    <RadioGroup v-model="form.val" >
-                        <Radio v-for="item of other.options"   :label="item" :key="item"></Radio>
+                    <RadioGroup v-model="form.val">
+                        <Radio v-for="item of other.options" :label="item" :key="item"></Radio>
                     </RadioGroup>
                 </FormItem>
                 </Col>
             </Row>
-            <Row :gutter="16"  v-if="form.name=='checkbox'">
+            <Row :gutter="16" v-if="form.name=='checkbox'">
                 <Col span="24">
                 <FormItem label="默认值：" prop="val">
-                    <CheckboxGroup v-model="form.val" >
-                        <Checkbox v-for="item of other.options"    :label="item" :key="item"></Checkbox>
+                    <CheckboxGroup v-model="form.val">
+                        <Checkbox v-for="item of other.options" :label="item" :key="item"></Checkbox>
                     </CheckboxGroup>
                 </FormItem>
                 </Col>
             </Row>
 
-            <Row :gutter="16"  v-if="form.name=='select'">
+            <Row :gutter="16" v-if="form.name=='select'">
                 <Col span="12">
-                    <FormItem label="可多选：" >
-                        <i-switch v-model="other.multiple"  ></i-switch>
-                    </FormItem>
+                <FormItem label="可多选：">
+                    <i-switch v-model="other.multiple"></i-switch>
+                </FormItem>
                 </Col>
                 <Col span="12">
-                    <FormItem label="可搜索：" >
-                        <i-switch v-model="other.filterable"  ></i-switch>
-                    </FormItem>
+                <FormItem label="可搜索：">
+                    <i-switch v-model="other.filterable"></i-switch>
+                </FormItem>
                 </Col>
-                
             </Row>
 
-            
-
-            
-
+            <Row :gutter="16" v-if="form.name=='cascader'">
+                <Col span="24">
+                <FormItem label="默认值：" prop="val">
+                    <Cascader :data="other.options" v-model="form.val"></Cascader>
+                </FormItem>
+                </Col>
+            </Row>
 
         </Form>
         <div class="footer-button">
@@ -128,46 +142,52 @@
 <script>
 import json from './json.js'
 import selTagList from '@/components/selTagList/selTagList.vue'
+import selTagListForObject from '@/components/selTagList/selTagListForObject.vue'
+import treeDataModal from '@/components/treeDataModal'
 export default {
     name: 'itemConfig',
-    components:{
-        selTagList
+    components: {
+        selTagList,
+        selTagListForObject,
+        treeDataModal
     },
     data() {
         let filedType = json;
         return {
             show: false,
             filedType: filedType,
-            index:0,
+            index: 0,
             form: {
-                active:false,
-                val:'',
+                active: false,
+                val: '',
             },
-            otherRulesList:[
+            otherRulesList: [
 
             ],
-            other:{
-                optionText:'',
-                options:[]
+            other: {
+                optionText: '',
+                options: [],
+                multiple: false,
+                filterable: false,
             }
         }
     },
-    watch:{
+    watch: {
         // show(val){
         //     if(!val){
         //         //this.$emit('closeActive',this.index);
         //     }
         // },
-       
+
 
     },
     methods: {
-        init(data,index) {
+        init(data, index) {
             Object.assign(this.$data, this.$options.data())
             this.show = true;
-            this.form=JSON.parse(JSON.stringify(data));
-            
-            this.index=index;
+            this.form = JSON.parse(JSON.stringify(data));
+
+            this.index = index;
             this.otherInitPlant(this.form);
         },
 
@@ -179,106 +199,149 @@ export default {
         close() {
             this.show = false
         },
-        del(){
+        del() {
             this.close();
-            this.$emit('del',this.index);
+            this.$emit('del', this.index);
         },
-        save(){
-            // console.log(this.form);return;
-            let data=JSON.parse(JSON.stringify(this.form))
-            data=this.watchRules(data);
-            data=this.otherSavePlant(data);
+        save() {
+            let data = JSON.parse(JSON.stringify(this.form))
+            data = this.otherSavePlant(data);
+            data = this.watchRules(data);
 
+            this.$emit('success', data, this.index);
             this.close();
-            this.$emit('success',data,this.index);
-           
+            
+
         },
-        isHaveOption(data){
-            if(data.name!='radio' && data.name!='checkbox' && data.name!='select' ){
-                return ;
-            }else{
+        isHaveOption(data) {
+            let haveOptions = [
+                'radio',
+                'checkbox',
+                'select',
+                'cascader'
+            ]
+            // if(data.name!='radio' && data.name!='checkbox' && data.name!='select' && data.name!='cascader'){
+            if (haveOptions.indexOf(data.name) == -1) {
+                return;
+            } else {
                 return true;
             }
         },
-        addItem(){
-            if(!this.isHaveOption(this.form)){
+        addItem() {
+            if (!this.isHaveOption(this.form)) {
                 return;
             }
 
-            if(this.other.optionText!= '' && this.other.options.indexOf(this.other.optionText)==-1){
-                // let options=JSON.parse(JSON.stringify(this.other.options))
-                this.other.options.push(this.other.optionText);
-                this.other.optionText='';
+            if (this.other.optionText != '' && this.other.options.indexOf(this.other.optionText) == -1) {
+                
+                if(this.form.name=='cascader'){
+                    this.other.options.push({
+                        label:this.other.optionText,
+                        value:this.other.optionText,
+                        children:[]
+                    });
+                }else{
+                    this.other.options.push(this.other.optionText);
+                }
+                
+
+                this.other.optionText = '';
                 // this.$refs.selTagList.init(this.other.options)
             }
-            console.log('additem',this.other.options)
+            console.log('additem', this.other.options)
         },
-        delItem(index){
-            if(!this.isHaveOption(this.form)){
+        delItem(index) {
+            if (!this.isHaveOption(this.form)) {
                 return;
             }
-            this.other.options.splice(index,1)
-            console.log('delItem',this.other.options)
-            this.$set(this.form.other,'options',this.other.options)
+            this.other.options.splice(index, 1)
+            console.log('delItem', this.other.options)
+            this.$set(this.form.other, 'options', this.other.options)
+        },
+        editCascaderOption(){
+            // this.form.other.options;
+            this.$refs.treeDataModal.init(this.other.options);
+        },
+        saveCascader(data){
+            this.other.options=data;
         },
         //autoComposet
-        autoCompleOption(){
-            if(!this.isHaveOption(this.form) ){
+        autoCompleOption() {
+            if (!this.isHaveOption(this.form)) {
                 delete this.form.other;
-            }else{
-                let name=this.form.name;
-                    // console.log(this.form.name)
-                let item=this.filedType.find(res=>{
-                    return res.name==name;
+            } else {
+                let name = this.form.name;
+                // console.log(this.form.name)
+                let item = this.filedType.find(res => {
+                    return res.name == name;
                 })
-                this.form.other=item.other
-                this.form.val=item.val
+                this.form.other = item.other
+                this.form.val = item.val
             }
-            this.other.options=[];
-            this.$refs.selTagList.init(this.other.options)
+            this.other.options = [];
+            if(this.form.name=='cascader'){
+                this.$refs.selTagListForObject.init(this.other.options)
+            }else{
+                this.$refs.selTagList.init(this.other.options)
+            }
 
         },
-        watchRules(data){
-            let rules=[];
-            if(data.required=='Y'){
-                if(data.name=='radio' || data.name=='checkbox' || data.name=='select'){
+        watchRules(data) {
+            let rules = [];
+            if (data.required == 'Y') {
+                if (data.name == 'radio' || data.name == 'select' && data.other.multiple == false) {
                     rules.push({ required: true, message: "请选择", trigger: "change" })
-                }else if(data.name=='input-number'  ){
-                    rules.push({ required: true,type:'number', message: "请选择", trigger: "blur" })
-                }else if(data.name=='date' || data.name=='daterange' ){
-                    rules.push({ required: true,type:'date', message: "请选择", trigger: "change" })
-                }else{
+                } else if (data.name == 'input-number') {
+                    rules.push({ required: true, type: 'number', message: "请选择", trigger: "blur" })
+                } else if (data.name == 'date' || data.name == 'daterange') {
+                    rules.push({ required: true, type: 'date', message: "请选择", trigger: "change" })
+                } else if (data.name == 'checkbox' || data.name == 'cascader' || data.name == 'select' && data.other.multiple == true) {
+                    rules.push({ required: true, type: 'array', message: "请选择", trigger: "change" })
+                } else {
                     rules.push({ required: true, message: "请输入", trigger: "change" })
                 }
             }
-            data.rules=rules;
+            data.rules = rules;
             return data;
         },
-        otherInitPlant(data){
-            if(this.isHaveOption(data) && data.other!=void 0 && data.other.options!=void 0){
-                this.other.options=data.other.options;
-            }else if(this.isHaveOption(data)){
-                this.other.options={
-                    options:[]
+        otherInitPlant(data) {
+            if (this.isHaveOption(data) && data.other != void 0 && data.other.options != void 0) {
+                this.other.options = data.other.options;
+            } else if (this.isHaveOption(data)) {
+                this.other.options = {
+                    options: []
                 }
-            }   
-            this.$nextTick(()=>{
-                this.$refs.selTagList.init(this.other.options)
+            }
+            this.$nextTick(() => {
+                if(this.form.name=='cascader'){
+                    this.$nextTick(()=>{
+                        this.$refs.selTagListForObject.init(this.other.options)
+                    })
+                }else{
+                    this.$nextTick(()=>{
+                        this.$refs.selTagList.init(this.other.options)
+                    })
+                }
+
             })
         },
         //保存时清空无关对象
-        otherSavePlant(data){
-            if(this.isHaveOption(data)){
-                data.other.options=this.other.options;
-            }else if(data.other!=void 0 && data.other.options!=void 0){
+        otherSavePlant(data) {
+            if (this.isHaveOption(data)) {
+                data.other = this.other
+            } else if (data.other != void 0 && data.other.options != void 0) {
                 delete data.other.options
             }
             return data;
         },
-        changeVal(e){
+        changeVal(e) {  
             // console.log('changeVal',this.form.val,e)
+        },
+        editChildOption(data){
+            console.log('editChildOption',data)
+            this.$refs.treeTable.init(data);
         }
-        
+
     }
 }
 </script>

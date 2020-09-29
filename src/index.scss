@@ -75,6 +75,11 @@ img {
 .ivu-select-arrow {
   margin-top: 0;
 }
+.ivu-cascader{
+    .ivu-select-dropdown{
+        width:100%;
+    }
+}
 
 .ivu-message {
   z-index: 9999 !important;

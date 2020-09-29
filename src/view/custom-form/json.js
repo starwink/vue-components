@@ -1,3 +1,7 @@
+/**
+ *  自定义表单控件基础数据
+ *  ps:定义val值用来解决默认val类型会出现异常提示
+ */
 export default [
     {
         name:'input',
@@ -42,6 +46,14 @@ export default [
         }
     },
     {
+        name:'cascader',
+        title:'级联选择',
+        val:[],
+        other:{
+            options:[]
+        }
+    },
+    {
         name:'date',
         title:'日期',
         val:'',
@@ -54,5 +66,5 @@ export default [
     },
 ]
 
-//ps val主要是为了解决切换类型时val字段类型的指定
+
 
