@@ -1,6 +1,7 @@
 <template>
     <div>
-        <Button @click="openNodeForm">打开tree</Button>
+        <Button @click="openNodeForm">打开搜索tree</Button>
+        <Button @click="openNodeModal">打开tree数据管理</Button>
         <Card>
             <p slot="title">返回内容</p>
             <Row>
@@ -10,13 +11,15 @@
             </Row>
         </Card>
          <getNodeForm ref="getNodeForm" @success="setTag"></getNodeForm>
+         <treeDataModal ref="treeDataModal" ></treeDataModal>
     </div>
 </template>
 <script>
 import getNodeForm from '@/view/components/tree-select/search-tree.vue'
+import treeDataModal from '@/components/treeDataModal'
 export default {
     components: {
-        'getNodeForm': getNodeForm,
+        getNodeForm,treeDataModal
     },
     methods: {
         setTag(e) {
@@ -25,6 +28,14 @@ export default {
         openNodeForm() {
             this.$refs.getNodeForm.init();
         },
+        openNodeModal(){
+            this.$refs.treeDataModal.init();
+        }
+    },
+    created(){
+        this.$nextTick(()=>{
+            this.$refs.treeDataModal.init();
+        })
     },
     computed:{
        
