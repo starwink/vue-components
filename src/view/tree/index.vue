@@ -18,32 +18,33 @@
 import getNodeForm from '@/view/components/tree-select/search-tree.vue'
 import treeDataModal from '@/components/treeDataModal'
 export default {
-    components: {
-        getNodeForm,treeDataModal
+  components: {
+    getNodeForm, treeDataModal
+  },
+  methods: {
+    setTag (e) {
+      this.data = JSON.stringify(e)
     },
-    methods: {
-        setTag(e) {
-            this.data = JSON.stringify(e);
-        },
-        openNodeForm() {
-            this.$refs.getNodeForm.init();
-        },
-        openNodeModal(){
-            this.$refs.treeDataModal.init();
-        }
+    openNodeForm () {
+      this.$refs.getNodeForm.init()
     },
-    created(){
-        this.$nextTick(()=>{
-            this.$refs.treeDataModal.init();
-        })
-    },
-    computed:{
-       
-    },
-    data(){
-        return {
-            data:''
-        }
+    openNodeModal () {
+      this.$refs.treeDataModal.init([])
     }
+  },
+  created () {
+    this.$nextTick(() => {
+      // this.$refs.treeDataModal.init();
+    })
+  },
+  computed: {
+
+  },
+  data () {
+    return {
+      data: ''
+    }
+  }
+
 }
 </script>
