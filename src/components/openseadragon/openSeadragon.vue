@@ -73,12 +73,13 @@
 </template>
 
 <script>
+// require('@/assets/libs/jquery.min.js');
 import '@/assets/libs/openseadragon'
 import '@/assets/libs/openseadragon-scalebar.js'
 import '@/assets/libs/openseadragon-fabricjs-overlay.js'
-// import "@/assets/libs/fabric.adapted.js";
-import { fabric } from 'fabric'
+import "@/assets/libs/fabric.adapted.js";
 
+// 
 import '@/assets/libs/html2canvas.min.js'
 import rightImgList from './rightImgList.vue'
 
@@ -491,6 +492,7 @@ export default {
       var _this = this
       this.fabricObj.on({
         'mouse:down': (e) => {
+            console.log('moveCount,down')
           if (_this.currentTool) {
             var offset_x = _this.fabricObj.calcOffset().viewportTransform[4]
             var offset_y = _this.fabricObj.calcOffset().viewportTransform[5]
@@ -505,7 +507,9 @@ export default {
           }
         },
         'mouse:up': (e) => {
+            console.log('moveCount,up')
           // 鼠标按下，给所画的视图添加序号
+          
           if (_this.moveCount !== 1 && (_this.currentTool === 'arrow' || _this.currentTool === 'ellipse' || _this.currentTool === 'juxing' || _this.currentTool === 'polygons')) {
             _this.caseNum += 1
           } else {
@@ -527,9 +531,11 @@ export default {
           _this.doDrawing = false
           _this.updateModifications(true)
           _this.viewer.setMouseNavEnabled(true)
-          _this.viewer.outerTracker.setTracking(false)
+          _this.viewer.outerTracker.setTracking(false);
+          
         },
         'mouse:out': (e) => {
+            console.log('moveCount,out')
           // 鼠标离开,复制mouse up
 
           // 鼠标抬起
@@ -541,6 +547,7 @@ export default {
           // _this.updateModifications(true);
           _this.viewer.setMouseNavEnabled(true)
           _this.viewer.outerTracker.setTracking(false)
+          console.log('out',_this.mouseTo);
         },
         'mouse:move': (e) => {
           // 鼠标移动
@@ -972,7 +979,7 @@ export default {
       })
 
       if (fabricObject || caseNumObject || textObject) {
-        const uuid = this.$helper.uuid()
+        const uuid = this.$helper.getNewUuid()
         _this.imgId = `${uuid}${_this.caseNum - 1}`
 
         if (textObject) {

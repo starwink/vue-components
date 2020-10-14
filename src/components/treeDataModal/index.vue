@@ -126,6 +126,8 @@ export default {
             let {row,isBase}=this.addObj;
             let label = otherData.label || '未设置';
             console.log('label,l',label,otherData)
+            if(!this.data){ this.data=[]}
+
             let data = {
                 id: uuidv4().replace(/-/g, ''),
                 label: label,
@@ -134,7 +136,7 @@ export default {
                 other:otherData
             }
             let currRow;
-
+            
             if (isBase) {
                 if (this.data.length == 0) {
                     this.data = [data]

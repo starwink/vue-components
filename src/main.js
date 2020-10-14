@@ -30,6 +30,7 @@ import './index.scss'
 import './iconfont.css'
 
 import tool from '@/utils/tool.js'
+
 Vue.use(Viewer)
 Vue.use(preview)
 

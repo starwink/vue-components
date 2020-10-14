@@ -34,7 +34,7 @@ deployPlugin.prototype.apply = function (compiler) {
             filelist += ('- ' + filename + '\n');
         }
 
-            console.log(filelist)
+            // console.log(filelist)
         // 将这个列表作为一个新的文件资源，插入到 webpack 构建中：
         compilation.assets['filelist.md'] = {
             source: function () {
