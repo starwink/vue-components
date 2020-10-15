@@ -1,11 +1,6 @@
 <template>
-    <Modal v-model="show" :title="title" :mask-closable="false" width="60">
-        <Row>
-            <Col :span="24" style="text-align: right;margin-bottom: 14px;">
-            <Button type="primary" @click.stop="addItem(data,true)">+</Button>
-            </Col>
-        </Row>
-        <Table row-key="id" :columns="columns" :data="data" border @on-selection-change="tableChange">
+    <div class="tree-page-view">
+        <Table row-key="id" :columns="columns" :data="data" border @on-selection-change="tableChange" @on-expand="treeChange" :show-header="false">
             <template slot-scope="{ row, index }" slot="action">
                 <Button type="primary" size="small" style="margin-right: 5px" @click="addItem(row)">新增子级</Button>
                 <Button type="info" size="small" style="margin-right: 5px" @click="editItem(row)">编辑</Button>
@@ -19,21 +14,10 @@
                 </Poptip>
             </template>
         </Table>
-        <div slot="footer">
-            <Poptip confirm transfer placement="top-end" @on-ok="del()" style="float: left;">
-                <div slot="title">
-                    <div>
-                        确认清空么?
-                    </div>
-                </div>
-                <Button type="error" style="margin-right: 5px">清空</Button>
-            </Poptip>
-            <Button @click.stop="close">取消</Button>
-            <Button type="primary" @click.stop="save()">保存</Button>
-        </div>
+
         <Spin size="large" fix v-if="spinShow"></Spin>
         <setLabelModal ref="setLabelModal" @createTreeItem="createTreeItem" @editTreeItem="editTreeItem"></setLabelModal>
-    </Modal>
+    </div>
 </template>
 
 <script>
@@ -63,12 +47,12 @@ export default {
       show: false,
       spinShow: false,
       data: [
-        // {
-        //     children: [],
-        //     id: "2448c5d61791471eb361e412b94f5e31",
-        //     label: "未设置",
-        //     _showChildren:true
-        // }
+        {
+          children: [],
+          id: '2448c5d61791471eb361e412b94f5e31',
+          label: '未设置',
+          _showChildren: true
+        }
       ],
       addObj: {},
       columns: [
@@ -96,11 +80,9 @@ export default {
   methods: {
     init (data) {
       Object.assign(this.$data, this.$options.data())
-      this.show = true
       this.data = data
     },
     close () {
-      this.show = false
     },
     // edit(row) {
     //     console.log('edit', row)
@@ -109,8 +91,8 @@ export default {
       this.data = []
     },
     save () {
-      this.$emit('success', this.data)
-      this.close()
+      // this.$emit('success', this.data);
+      // this.close();
     },
     addItem (row, isBase = false) {
       this.addObj = { row: row, isBase: isBase }
@@ -131,7 +113,6 @@ export default {
     createTreeItem (otherData = {}) {
       let { row, isBase } = this.addObj
       let label = otherData.label || '未设置'
-      console.log('label,l', label, otherData)
       if (!this.data) { this.data = [] }
 
       let data = {
@@ -287,6 +268,9 @@ export default {
     tableChange (select) {
       console.log('select', select)
       // this.userSelData = select
+    },
+    treeChange (...par) {
+      console.log('trree', par)
     }
 
   }

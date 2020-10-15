@@ -12,14 +12,19 @@
         </Card>
          <getNodeForm ref="getNodeForm" @success="setTag"></getNodeForm>
          <treeDataModal ref="treeDataModal" ></treeDataModal>
+         <treeDataModalPageSlot ref="treeDataModalPageSlot" ></treeDataModalPageSlot>
+         <a href="https://buuing.github.io/vue-search-tree/" style="margin-top:40px;">github vue-search-tree</a>
+         <p>VVVVVVVVVVV</p>
+         <iframe src="https://buuing.github.io/vue-search-tree/"  frameborder="0" width="100%" height="600px;" />
     </div>
 </template>
 <script>
 import getNodeForm from '@/view/components/tree-select/search-tree.vue'
 import treeDataModal from '@/components/treeDataModal'
+import treeDataModalPageSlot from '@/components/treeDataModal/pageSlot'
 export default {
   components: {
-    getNodeForm, treeDataModal
+    getNodeForm, treeDataModal, treeDataModalPageSlot
   },
   methods: {
     setTag (e) {
