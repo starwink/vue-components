@@ -229,6 +229,14 @@ export default [
           title: '刻度尺'
         },
         component: () => import('@/view/ruler/index.vue')
+      },
+      {
+        path: '/g6',
+        name: 'components/g6',
+        meta: {
+          title: 'G6关系图'
+        },
+        component: () => import('@/view/g6/index.vue')
       }
 
     ]

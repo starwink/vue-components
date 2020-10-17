@@ -46,6 +46,7 @@
     "xmldom": "^0.3.0"
   },
   "devDependencies": {
+    "@antv/g6": "^3.8.1",
     "@vue/cli-plugin-babel": "^3.0.1",
     "@vue/cli-plugin-eslint": "^3.0.1",
     "@vue/cli-plugin-unit-mocha": "^3.0.1",
