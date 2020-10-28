@@ -190,7 +190,7 @@ export default [
         ]
       },
       {
-        path: '/seadragon',
+        path: 'seadragon',
         name: 'components/seadragon',
         meta: {
           title: '大图查看'
@@ -198,7 +198,7 @@ export default [
         component: () => import('@/view/seadragon/index.vue')
       },
       {
-        path: '/seadragon/mark',
+        path: 'seadragon/mark',
         name: 'components/seadragon-mark',
         meta: {
           title: '大图查看demo'
@@ -207,7 +207,7 @@ export default [
       },
 
       {
-        path: '/fun',
+        path: 'fun',
         name: 'components/fun',
         meta: {
           title: 'js 函数'
@@ -215,7 +215,7 @@ export default [
         component: () => import('@/view/fun/index.vue')
       },
       {
-        path: '/custom',
+        path: 'custom',
         name: 'components/custom',
         meta: {
           title: '自定义表单'
@@ -223,7 +223,7 @@ export default [
         component: () => import('@/view/custom-form/createPage.vue')
       },
       {
-        path: '/ruler',
+        path: 'ruler',
         name: 'components/ruler',
         meta: {
           title: '刻度尺'
@@ -231,12 +231,20 @@ export default [
         component: () => import('@/view/ruler/index.vue')
       },
       {
-        path: '/g6',
+        path: 'g6',
         name: 'components/g6',
         meta: {
           title: 'G6关系图'
         },
         component: () => import('@/view/g6/index.vue')
+      },
+      {
+        path: 'jsonForm',
+        name: 'components/jsonForm',
+        meta: {
+          title: '表单配置JSON'
+        },
+        component: () => import('@/view/jsonForm/index.vue')
       }
 
     ]

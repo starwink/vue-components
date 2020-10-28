@@ -58,6 +58,7 @@
     "css-loader": "^3.2.0",
     "eslint-plugin-cypress": "^2.0.1",
     "fly": "^3.3.6",
+    "jsoneditor": "^9.1.1",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "lint-staged": "^6.0.0",
