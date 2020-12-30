@@ -2,10 +2,14 @@ import Mock from 'mockjs'
 import { login, logout, getUserInfo } from './login'
 import { getTableData, getDragList, uploadImage, getOrgData, getTreeSelectData,getTreeNodeData,getDictsList,getUserLogin,getDictsAll,getReskey,getLoginLogout } from './data'
 
+import LOW_PRESSURE from './data/python/LOW_PRESSURE';
+import CABLE from './data/python/CABLE';
+
 // 配置Ajax请求延时，可用来测试网络延迟大时项目中一些效果
 Mock.setup({
   timeout: 200
 })
+Mock.mock(/\/python\/v1/, LOW_PRESSURE)
 Mock.mock(/\/tagOrg\/getOrgTagGroupList/, getTreeNodeData)
 Mock.mock(/\/dicts\/list/, getDictsList)
 Mock.mock(/\/login\/login/, getUserLogin)

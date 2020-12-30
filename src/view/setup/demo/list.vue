@@ -46,7 +46,7 @@
 <script>
 import { mapState } from 'vuex'
 import http from '@/api/shuxi-dict.js'
-import axios from '@/api/demo-axios'
+// import axios from '@/api/demo-axios'
 import form from './components/form';
 import itemList from './components/itemList';
 // import axios from 'axios'
@@ -85,11 +85,11 @@ export default {
             // });
             console.log('list axios',axios)
             // axios.list({id:1})
-            axios.pushData({id:1}).then(res=>{
-                console.log('true',res)
-            },err=>{
-                console.log('err',err)
-            })
+            // axios.pushData({id:1}).then(res=>{
+            //     console.log('true',res)
+            // },err=>{
+            //     console.log('err',err)
+            // })
             // setTimeout(function(){
             //     console.log(222);
             //     instance.get('/1',{

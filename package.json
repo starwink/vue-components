@@ -19,6 +19,7 @@
     "codemirror": "^5.48.2",
     "countup": "^1.8.2",
     "cropperjs": "^1.2.2",
+    "d3": "^6.3.0",
     "dayjs": "^1.8.36",
     "echarts": "^4.0.4",
     "fabric": "^4.1.0",
