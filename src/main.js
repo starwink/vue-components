@@ -30,7 +30,7 @@ import './index.scss'
 import './iconfont.css'
 
 import tool from '@/utils/tool.js'
-import { api } from "@/axios/api/index.js";
+import { api } from '@/axios/api/index.js'
 
 Vue.use(Viewer)
 Vue.use(preview)
@@ -42,7 +42,7 @@ Viewer.setDefaults({
 Vue.prototype.$helper = tool
 Vue.prototype.$config = config
 Vue.prototype.$comfun = comfun
-Vue.prototype.$api = api;
+Vue.prototype.$api = api
 
 // 实际打包时应该不引入mock
 /* eslint-disable */

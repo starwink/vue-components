@@ -1,8 +1,8 @@
 import Main from '@/components/main'
 import H5 from '@/components/H5/index'
 import parentView from '@/components/parent-view'
-import demoRouter from './routers/demoRouter';
-import baseRouter from './routers/baseRouter';
+import demoRouter from './routers/demoRouter'
+import baseRouter from './routers/baseRouter'
 
 /**
  * iview-admin中meta除了原生参数外可配置的参数:
@@ -21,15 +21,14 @@ import baseRouter from './routers/baseRouter';
  * }
  */
 
-const childrenRoute=[
-    ...baseRouter
-    // ...demoRouter,
-];
+const childrenRoute = [
+  ...baseRouter
+  // ...demoRouter,
+]
 
 export default [
 
   // PC
-  ...childrenRoute,
+  ...childrenRoute
 
-  
 ]

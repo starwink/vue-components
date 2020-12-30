@@ -1,9 +1,9 @@
 import Mock from 'mockjs'
 import { login, logout, getUserInfo } from './login'
-import { getTableData, getDragList, uploadImage, getOrgData, getTreeSelectData,getTreeNodeData,getDictsList,getUserLogin,getDictsAll,getReskey,getLoginLogout } from './data'
+import { getTableData, getDragList, uploadImage, getOrgData, getTreeSelectData, getTreeNodeData, getDictsList, getUserLogin, getDictsAll, getReskey, getLoginLogout } from './data'
 
-import LOW_PRESSURE from './data/python/LOW_PRESSURE';
-import CABLE from './data/python/CABLE';
+import LOW_PRESSURE from './data/python/LOW_PRESSURE'
+import CABLE from './data/python/CABLE'
 
 // 配置Ajax请求延时，可用来测试网络延迟大时项目中一些效果
 Mock.setup({
@@ -19,10 +19,10 @@ Mock.mock(/\/login\/logout/, getLoginLogout)
 
 // Mock.mock(/\/res\/auserRes/, resData)
 // Mock.mock(/\/taskIssue\/finishDetails/, finishDetails)
-//素材管理 
+// 素材管理
 // Mock.mock(/\/localMaterial\/details/, sucaiDetail)
 // Mock.mock(/\/localMaterial\/list/, sucaiList)
-//发布
+// 发布
 // Mock.mock(/\/articleIssue\/list/, articleIssueList)
 // Mock.mock(/\/articleIssue\/getArticleByArticleSendId/, getArticleByArticleSendId)
 
