@@ -165,7 +165,16 @@ export default [
           title: 'axios'
         },
         component: () => import('@/view/axios/index.vue')
-      }
+      },
+      {
+        path: '/ua',
+        name: 'components/ua',
+        meta: {
+            title: '浏览器信息',
+            // hideInMenu: true
+        },
+        component: () => import('@/components/ua/index.vue')
+    },
 
     ]
 

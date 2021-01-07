@@ -42,15 +42,7 @@ export default [
         component: () =>
             import('@/view/demo/index.vue')
     },
-    {
-        path: '/ua',
-        name: 'h5/ua',
-        meta: {
-            title: '项目展示',
-            // hideInMenu: true
-        },
-        component: () => import('@/components/ua/index.vue')
-    },
+    
 
     {
         path: '/',
