@@ -1,5 +1,6 @@
 
 # ivuew admin componeents demo
+> Learning notes
 
 [![](https://img.shields.io/github/release/iview/iview-admin.svg)](https://githu
 ## Install
@@ -17,6 +18,16 @@ npm run dev
 npm run build
 ```
 
+### The version is packaged by pressing the git tab
+```
+npm run zbuild
+```
+
+### Docker run 
+```
+cd docker;
+./deploy.sh 
+```
 
 ## 文件结构
 ```shell
