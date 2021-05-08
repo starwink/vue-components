@@ -4,6 +4,7 @@ import parentView from '@/components/parent-view'
 import demoRouter from './routers/demoRouter'
 import baseRouter from './routers/baseRouter'
 import ewellRouter from './routers/ewellRouter'
+import noteRouter from './routers/noteRouter'
 
 /**
  * iview-admin中meta除了原生参数外可配置的参数:
@@ -24,8 +25,9 @@ import ewellRouter from './routers/ewellRouter'
 
 const childrenRoute = [
   ...baseRouter,
-  // ...demoRouter,
+  ...demoRouter,
   ...ewellRouter,
+  ...noteRouter,
 ]
 
 export default [

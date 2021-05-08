@@ -22,6 +22,15 @@ export default [
                     import('@/view/tree/index.vue')
       },
       {
+        path: 'treedemo',
+        name: 'components/treedemo',
+        meta: {
+          title: 'vue-search-tree'
+        },
+        component: () =>
+                    import('@/view/tree/demo.vue')
+      },
+      {
         path: 'imgupload',
         name: 'components/imgupload',
         meta: {
@@ -82,7 +91,19 @@ export default [
             },
             component: () =>
                             import('@/view/code-editir/js.vue')
+          },
+          {
+            path: 'ace',
+            name: 'components/ace',
+            meta: {
+              title: 'TODO:vue2-ace-editor;感觉效果更好的编辑器'
+            },
+            component: () =>
+                            import('@/view/code-editir/ace.vue')
           }
+
+
+          
         ]
       },
       {

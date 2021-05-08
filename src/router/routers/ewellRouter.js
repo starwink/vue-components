@@ -22,9 +22,25 @@ export default [
             path: 'say',
             name: 'language/say',
             meta: {
-                title: 'AI会话',
+                title: '功能模板',
             },
             component: () => import('@/views/natural-language/nlp')
+        },
+        {
+            path: 'chatdemo',
+            name: 'language/chat',
+            meta: {
+                title: '会话样式',
+            },
+            component: () => import('@/views/natural-language/chat')
+        },
+        {
+            path: 'chat',
+            name: 'language/chat-window',
+            meta: {
+                title: 'AI会话',
+            },
+            component: () => import('@/views/natural-language/chat/chat-window')
         },
      
     ]
