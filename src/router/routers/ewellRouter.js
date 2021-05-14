@@ -42,6 +42,14 @@ export default [
             },
             component: () => import('@/views/natural-language/chat/chat-window')
         },
+        {
+            path: 'form',
+            name: 'language/single-disease',
+            meta: {
+                title: '单病种表单',
+            },
+            component: () => import('@/views/single-disease/form')
+        },
      
     ]
 
