@@ -75,6 +75,16 @@ Vue.config.productionTip = false
 importDirective(Vue)
 Vue.directive('clickOutside', clickOutside)
 
+
+// 网络判断
+window.addEventListener('offline', function(e) {
+    Message.error({
+        content: '网络中断，请检查网络后重试',
+        closable: true,
+        duration: 1000
+    });
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

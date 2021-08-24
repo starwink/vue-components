@@ -122,6 +122,38 @@ export default [
                             import('@/view/note/vue/index.vue')
                     },
                 ]
+            },
+            {
+                path: 'chart',
+                component: parentView,
+                name: 'note/chart',
+                meta: {
+                    icon: 'logo-buffer',
+                    title: '图表',
+                    showAlways: true
+                },
+                children: [
+                    
+                    {
+                        path: 'g2plot',
+                        name: 'note/vuecom/g2plot',
+                        meta: {
+                            title: 'g2plot'
+                        },
+                        component: () =>
+                            import('@/view/note/g2plot/index.vue')
+                    },
+                    {
+                        path: 'g2line',
+                        name: 'note/vuecom/g2line',
+                        meta: {
+                            title: 'g2双Y轴拆线'
+                        },
+                        component: () =>
+                            import('@/view/note/g2/line-two-y.vue')
+                    },
+
+                ]
             }
         ]
     }
