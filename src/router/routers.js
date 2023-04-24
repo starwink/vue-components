@@ -5,6 +5,7 @@ import demoRouter from './routers/demoRouter'
 import baseRouter from './routers/baseRouter'
 import ewellRouter from './routers/ewellRouter'
 import noteRouter from './routers/noteRouter'
+import myRouter from './routers/myRouter'
 
 /**
  * iview-admin中meta除了原生参数外可配置的参数:
@@ -28,6 +29,7 @@ const childrenRoute = [
   ...demoRouter,
   ...ewellRouter,
   ...noteRouter,
+  ...myRouter
 ]
 
 export default [
