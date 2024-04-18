@@ -65,7 +65,6 @@
     "chai": "^4.1.2",
     "compression-webpack-plugin": "^6.0.2",
     "css-loader": "^3.2.0",
-    "eslint-plugin-cypress": "^2.0.1",
     "fly": "^3.3.6",
     "jsoneditor": "^9.1.1",
     "less": "^2.7.3",
@@ -97,5 +96,9 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "volta": {
+    "node": "12.22.12",
+    "yarn": "1.22.22"
   }
 }

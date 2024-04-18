@@ -29,8 +29,10 @@ router.beforeEach((to, from, next) => {
     if (to.name) {
         toH5 = to.name.split('/')
     }
+    console.log('toH5',toH5)
     // console.log(to.name)
-    if (toH5[0] == 'h5') {
+    if (toH5[0] == 'h5' || toH5[0]=='zujian') {
+        
         turnTo(to, 'admin', next); return;
     }
     //   console.log('token====', token)

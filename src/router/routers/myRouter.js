@@ -29,13 +29,13 @@ export default [
         component: () => import('@/view/zujian/jsoninput/demo.vue')
       },
       {
-        path: 'grapeSelect',
-        name: 'zujian/grapeSelect',
+        path: 'apiloadcomp',
+        name: 'zujian/apiloadcomp',
         meta: {
-          title: '上下级同框多选框'
+          title: '动态异常加载组件'
         },
-        component: () => import('@/view/zujian/grapeSelect/demo.vue')
-      }
+        component: () => import('@/view/zujian/apiLoadingComp/index.vue')
+      },
 
     ]
   }
