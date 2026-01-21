@@ -5,6 +5,9 @@ import { getTableData, getDragList, uploadImage, getOrgData, getTreeSelectData, 
 import LOW_PRESSURE from './data/python/LOW_PRESSURE'
 import CABLE from './data/python/CABLE'
 
+import  disease from './data/ewell.disease.js'
+import  department from './data/ewell.department.js'
+
 // 配置Ajax请求延时，可用来测试网络延迟大时项目中一些效果
 Mock.setup({
   timeout: 200
@@ -16,6 +19,10 @@ Mock.mock(/\/login\/login/, getUserLogin)
 Mock.mock(/\/res\/resKeys/, getReskey)
 Mock.mock(/\/dicts\/all/, getDictsAll)
 Mock.mock(/\/login\/logout/, getLoginLogout)
+
+
+Mock.mock(/\/ewell\/ai\/disease/, disease)
+Mock.mock(/\/ewell\/ai\/department/, department)
 
 // Mock.mock(/\/res\/auserRes/, resData)
 // Mock.mock(/\/taskIssue\/finishDetails/, finishDetails)

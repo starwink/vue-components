@@ -1,8 +1,8 @@
 
 # ivuew admin componeents demo
 > Learning notes
-
-[![](https://img.shields.io/github/release/iview/iview-admin.svg)](https://githu
+> 
+![](https://img.shields.io/github/release/iview/iview-admin.svg)
 ## Install
 ```bush
 // install dependencies

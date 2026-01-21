@@ -44,21 +44,21 @@ module.exports = {
   productionSourceMap: false,
   //
   /* configureWebpack:config=>{
-      console.log('coeeeee-->',config)
-      config.optimization.minimizer = [
-          // new MyExampleWebpackPlugin({
-          //     uglifyOptions: {
-          //         compress: {
-          //             warnings: false,
-          //             drop_console: true, //console
-          //             drop_debugger: true,
-          //             pure_funcs: ['console.log'] //移除console
-          //         }
-          //     }
-          // })
-      ]
+        console.log('coeeeee-->',config)
+        config.optimization.minimizer = [
+            // new MyExampleWebpackPlugin({
+            //     uglifyOptions: {
+            //         compress: {
+            //             warnings: false,
+            //             drop_console: true, //console
+            //             drop_debugger: true,
+            //             pure_funcs: ['console.log'] //移除console
+            //         }
+            //     }
+            // })
+        ]
 
-    }, */
+      }, */
   // 打包时生成.gz文件,nginx 需要开始对应的gzip支持;
   configureWebpack: config => {
     config.output.chunkFilename = process.env.NODE_ENV == 'production' ? 'js/[name].[chunkhash].js' : 'js/[name].[hash].js', // 给每个js文件添加chunkhash后会自动更新已经改动的文件，而没有改动的文件则继续使用缓存。
@@ -80,11 +80,21 @@ module.exports = {
   devServer: {
     // proxy: 'http://127.0.0.1:7005'
     proxy: {
-      '/json': {
-        target: 'http://127.0.0.1:7001'
+      /*  '/json': {
+                target: 'http://127.0.0.1:7001'
+            },
+            '/demo': {
+                target: 'http://127.0.0.1:7001'
+            }, */
+      '/ner': {
+        target: 'http://192.168.198.229:28580'
+        // target: 'http://127.0.0.1:18881'
       },
-      '/demo': {
-        target: 'http://127.0.0.1:7001'
+      '/dept': {
+        target: 'http://192.168.198.229:28480'
+      },
+      '/diagnosis': {
+        target: 'http://192.168.198.229:28380'
       }
     }
   }

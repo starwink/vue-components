@@ -102,7 +102,7 @@ export default {
         doCopy: function (str) {
         let that = this
             this.$copyText(str).then(function (e) {
-                that.$Message.info('复制成功')
+                that.$Message.info('复制成功!')
             }, function (e) {
                 that.$Message.info('请手动复制')
             })

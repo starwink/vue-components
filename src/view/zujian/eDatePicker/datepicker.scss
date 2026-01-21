@@ -1,0 +1,93 @@
+$namespace: 'ewell'; 
+
+$default-color: #2c3e50;
+$primary-color: #13939e;
+
+   
+
+
+@import '~vue2-datepicker/scss/index.scss';
+::placeholder {
+    color: #ccc;
+}
+.ewell-input{
+    height: 32px ;
+    border: 1px solid #DCDFE6;
+    box-shadow:none;
+}
+.ewell-icon-calendar, .ewell-icon-clear{
+    color:rgb(192, 196, 204);
+}
+.ewell-datepicker-sidebar{
+    width: 160px;
+    max-height: 272px;
+    overflow-y: auto;
+    padding: 0;
+}
+.ewell-datepicker-sidebar + .ewell-datepicker-content{
+    margin-left: 160px;
+}
+
+.date-area{
+
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+   
+   
+    .active{
+        background-color: #13939E;
+        color:#fff;
+        border-radius: 2px;
+       
+    }
+    .date-group{
+        padding: 5px 0 4px;
+        i{
+            padding: 0 8px;
+            font-size: 12px;
+        }
+    }
+    .item{
+        background-color: #fff;
+        p{
+            padding: 5px 0 4px;
+            margin-left: 16px;
+            padding-left: 16px;
+            &:hover{
+                background-color: #EBF6F7;
+            }
+            
+
+        }
+    }
+
+}
+
+
+.ewell-datepicker-main {
+    .title {
+        font-weight: 500;
+        color: #111;
+        padding-left: 15px;
+        display: block;
+        margin-left: -6px;
+        margin-right: -6px;
+        margin-top: -6px;
+        background-color: #eee;
+        padding-top: 11px;
+        padding-bottom: 6px;
+    }
+
+    .el-dropdown {
+        padding-left: 8px;
+        margin-top: 12px;
+        &:first-child {
+            margin-top: 0px;
+        }
+    }
+    .link-menu {
+        color: #13939e;
+        cursor: pointer;
+    }
+}
