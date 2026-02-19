@@ -26,7 +26,7 @@
     "d3": "^6.3.0",
     "dayjs": "^1.8.36",
     "echarts": "^4.0.4",
-    "fabric": "^4.1.0",
+    "fabric": "^7.2.0",
     "flyio": "^0.6.14",
     "html2canvas": "^1.0.0-alpha.12",
     "iview-area": "^1.5.17",
